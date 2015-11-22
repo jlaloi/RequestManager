@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Hello AngularJS</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+        <style type="text/css">
+            [ng\:cloak], [ng-cloak], .ng-cloak {
+                display: none !important;
+            }
+        </style>
+    </head>
+
+    <body ng-app="hello" ng-cloak class="ng-cloak">
+
+        <div ng-controller="navigation" class="container">
+            <ul class="nav nav-pills" role="tablist">
+                <li ng-class="{active:tab('home')}"><a href="#/">home</a></li>
+                <li><a href="#/login">login</a></li>
+                <li ng-show="authenticated"><a href="" ng-click="logout()">logout</a></li>
+            </ul>
+        </div>
+
+        <div ng-view class="container"></div>
+
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular-route.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular-cookies.min.js"></script>
+        <script src="js/hello.js"></script>
+
+    </body>
+</html>
