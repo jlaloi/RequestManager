@@ -14,7 +14,7 @@ import java.util.UUID;
 @RestController
 public class RestServices {
 
-    @RequestMapping("/user")
+    @RequestMapping("/logged")
     public Principal user(Principal user) {
         return user;
     }

@@ -14,7 +14,7 @@ public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private long id;
 
     @Column(unique=true)
     private String username;
@@ -23,12 +23,23 @@ public class User implements UserDetails {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Collection<Role> authorities;
 
-    private String fullName;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String phoneLandLine;
+    private String phoneMobile;
+    private String note;
+
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "addressId")
+    private Address address;
+
+    private boolean enabled;
 
     public User(){
     }
 
-    public Integer getId() {
+    public long getId() {
         return id;
     }
 
@@ -44,12 +55,64 @@ public class User implements UserDetails {
         this.authorities = authorities;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneLandLine() {
+        return phoneLandLine;
+    }
+
+    public void setPhoneLandLine(String phoneLandLine) {
+        this.phoneLandLine = phoneLandLine;
+    }
+
+    public String getPhoneMobile() {
+        return phoneMobile;
+    }
+
+    public void setPhoneMobile(String phoneMobile) {
+        this.phoneMobile = phoneMobile;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     @Override
@@ -84,7 +147,7 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return enabled;
     }
 
 }

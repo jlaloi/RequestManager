@@ -1,0 +1,75 @@
+<form name="modifyUserForm" ng-submit="modifyUserForm.$valid && modifyUserCtrl.modifyUser()">
+    <fieldset class="form-group">
+        <input type="text" class="form-control" placeholder="User ID"
+               title="ID" ng-model="modifyUserCtrl.user.id" ng-change="modifyUserCtrl.idUpdated()" required />
+    </fieldset>
+    <fieldset class="form-group">
+        <input type="text" class="form-control" placeholder="User Name"
+               title="User Name" ng-model="modifyUserCtrl.user.username" required />
+    </fieldset>
+    <fieldset class="form-group">
+        <input type="password" class="form-control" placeholder="Password"
+               title="Password" ng-model="modifyUserCtrl.user.password" required />
+    </fieldset>
+    <fieldset class="form-group">
+        <input type="text" class="form-control" placeholder="First Name"
+               title="First Name" ng-model="modifyUserCtrl.user.firstName" required />
+    </fieldset>
+    <fieldset class="form-group">
+        <input type="text" class="form-control" placeholder="Last Name"
+               title="Last Name" ng-model="modifyUserCtrl.user.lastName" required />
+    </fieldset>
+
+    <fieldset class="form-group">
+        <input type="text" class="form-control" placeholder="Street Number"
+               title="Street Number" ng-model="modifyUserCtrl.user.address.streetNumber" required />
+    </fieldset>
+
+    <fieldset class="form-group">
+        <input type="text" class="form-control" placeholder="Street Name"
+               title="Street Name" ng-model="modifyUserCtrl.user.address.streetName" required />
+    </fieldset>
+
+    <fieldset class="form-group">
+        <input type="text" class="form-control" placeholder="Zip Code"
+               title="Zip Code" ng-model="modifyUserCtrl.user.address.zipCode" required />
+    </fieldset>
+
+    <fieldset class="form-group">
+        <input type="text" class="form-control" placeholder="City"
+               title="City" ng-model="modifyUserCtrl.user.address.city" required />
+    </fieldset>
+
+    <fieldset class="form-group">
+        <textarea  class="form-control" placeholder="Address Note"
+                   title="Address Note" ng-model="modifyUserCtrl.user.address.note" required ></textarea>
+    </fieldset>
+
+    <fieldset class="form-group">
+        <input type="email" name="email" class="form-control" placeholder="Email"
+               title="Email" ng-model="modifyUserCtrl.user.email" required />
+    </fieldset>
+    <fieldset class="form-group">
+        <input type="text" class="form-control" placeholder="Phone Land Line"
+               title="Phone Land Line" ng-model="modifyUserCtrl.user.phoneLandLine" required />
+    </fieldset>
+    <fieldset class="form-group">
+        <input type="text" class="form-control" placeholder="Phone Mobile"
+               title="Phone Mobile" ng-model="modifyUserCtrl.user.phoneMobile" required />
+    </fieldset>
+    <fieldset class="form-group">
+        <textarea class="form-control" placeholder="Note"
+                  title="Note" ng-model="modifyUserCtrl.user.note" required ></textarea>
+    </fieldset>
+
+    <fieldset class="form-group">
+        <input type="checkbox" class="form-control" placeholder="Allowed to log"
+               title="Allowed to log" ng-model="modifyUserCtrl.user.enabled"  /> Allowed to log
+    </fieldset>
+
+    <fieldset class="form-group">
+        <input type="submit" class="btn btn-primary pull-right" ng-disabled="!modifyUserForm.$valid"
+               value="Modify user" />
+    </fieldset>
+    <span>{{modifyUserCtrl.modifyInfo}}</span>
+</form>

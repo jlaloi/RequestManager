@@ -10,6 +10,10 @@ public class RequestStatus {
 
     public final static RequestStatus CREATED = new RequestStatus("CREATED");
     public final static RequestStatus VALIDATED = new RequestStatus("VALIDATED");
+    public final static RequestStatus PLANIFIED = new RequestStatus("PLANIFIED");
+    public final static RequestStatus ONSITE = new RequestStatus("ONSITE");
+    public final static RequestStatus COMPLETED = new RequestStatus("COMPLETED");
+    public final static RequestStatus CLOSED = new RequestStatus("CLOSED");
 
     private String status;
 

@@ -12,8 +12,9 @@ import javax.persistence.Id;
 @Entity
 public class Role implements GrantedAuthority {
 
-    public final static Role USER = new Role("USER");
+    public final static Role CUSTOMER = new Role("CUSTOMER");
     public final static Role ADMIN = new Role("ADMIN");
+    public final static Role TECHNICIAN = new Role("TECHNICIAN");
 
     @Id
     @GeneratedValue

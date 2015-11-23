@@ -38,12 +38,18 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private void createDefaultAdmin() {
         String adminUsername = "admin";
         User user = userRepository.findByUsername(adminUsername);
+       /* if(user != null){
+            userRepository.delete(user);
+            user = null;
+        }*/
         if (user == null) {
             System.out.println("Admin need to be created");
             User admin = new User();
             admin.setUsername(adminUsername);
             admin.setPassword(new BCryptPasswordEncoder().encode(adminUsername));
-            admin.setFullName(adminUsername);
+            admin.setFirstName("The");
+            admin.setLastName(adminUsername);
+            admin.setEnabled(true);
             List<Role> roles = new ArrayList<Role>();
             roles.add(Role.ADMIN);
             admin.setAuthorities(roles);
