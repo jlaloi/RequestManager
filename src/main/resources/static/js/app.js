@@ -1,67 +1,6 @@
 (function() {
 
-    var app = angular.module('requestManager', ['ui.router']);
-
-    app.directive('loginForm', function() {
-        return {
-            restrict : 'E',
-            templateUrl : 'login.html',
-            controller: function($rootScope, $scope, $http) {
-
-                var authenticate = function(credentials, callback) {
-
-                    var headers = credentials ? {
-                        authorization : "Basic "
-                        + btoa(credentials.username + ":"
-                            + credentials.password)
-                    } : {};
-
-                    $http.get('logged', {
-                        headers : headers
-                    }).success(function(data) {
-                        if (data.name) {
-                            $rootScope.authenticated = true;
-                        } else {
-                            $rootScope.authenticated = false;
-                        }
-                        callback && callback($rootScope.authenticated);
-                    }).error(function() {
-                        $rootScope.authenticated = false;
-                        callback && callback(false);
-                    });
-
-                }
-
-                authenticate();
-
-                $scope.credentials = {};
-                $scope.login = function() {
-                    authenticate($scope.credentials, function(authenticated) {
-                        if (authenticated) {
-                            console.log("Login succeeded")
-                            $scope.error = false;
-                            $rootScope.authenticated = true;
-                        } else {
-                            console.log("Login failed")
-                            $scope.error = true;
-                            $rootScope.authenticated = false;
-                        }
-                    })
-                };
-
-                $scope.logout = function() {
-                    $http.post('logout', {}).success(function() {
-                        $rootScope.authenticated = false;
-                    }).error(function(data) {
-                        $rootScope.authenticated = false;
-                    });
-                }
-
-            },
-            controllerAs : 'loginCtl'
-        };
-
-    });
+    var app = angular.module('requestManager', ['ui.router','login','user']);
 
     app.service('userService', function($http) {
         var baseUrl = '/user/';
@@ -86,7 +25,7 @@
 
         $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-        //$urlRouterProvider.otherwise("usersList");
+        $urlRouterProvider.otherwise("/");
 
         $stateProvider
             .state('userList', {
@@ -152,45 +91,6 @@
                 },
                 controllerAs: 'modifyUserCtrl'
             });
-    });
-
-    app.directive('userRoles', function() {
-        return {
-            restrict : 'E',
-            require: 'ngModel',
-            link: function(scope, element, attrs, ngModel) {
-                scope.roles = [ {"authority":"ADMIN"}, {"authority":"CUSTOMER"}, {"authority":"TECHNICIAN"} ];
-                scope.selected = {};
-                scope.userRoles = [];
-                scope.roleChange = function(role){
-                    var index = ngModel.$modelValue.map(function(d) { return d['authority']; }).indexOf(role.authority);
-                    if(scope.selected[role.authority]){
-                        if(index = -1){
-                            ngModel.$modelValue.push(role);
-                        }
-                    }else{
-                        if(index > -1){
-                            ngModel.$modelValue.splice(index, 1);
-                        }
-                    }
-                }
-                function revalidate(_val) {
-                    if(!angular.isUndefined(ngModel.$modelValue) && angular.isArray(ngModel.$modelValue)) {
-                        for (var i = 0; i < scope.roles.length; i++) {
-                            var role = scope.roles[i];
-                            var index = ngModel.$modelValue.map(function(d) { return d['authority']; }).indexOf(role.authority);
-                            if (index> -1) {
-                                scope.selected[role.authority] = true;
-                            }
-                        }
-                    }
-                    return _val;
-                }
-                ngModel.$formatters.unshift(revalidate);
-                ngModel.$parsers.unshift(revalidate);
-             },
-            templateUrl : 'user-roles.html'
-        };
     });
 
 })();

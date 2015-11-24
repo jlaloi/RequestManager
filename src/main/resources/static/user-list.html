@@ -9,10 +9,10 @@
     </tr>
     </thead>
     <tr ng-repeat="user in usersCtrl.users">
-        <td> #<a href="/#/userModify/{{user.id}}">{{user.id}}</a></td>
-        <td> <a href="/#/userModify/{{user.id}}"> {{user.firstName + ' ' + user.lastName}}</td>
-        <td> <a href="/#/userModify/{{user.id}}"> {{user.phoneLandLine + ' - ' + user.phoneMobileLine}}</td>
-        <td> <a href="/#/userModify/{{user.id}}"> {{user.email}}</td>
-        <td> <a href="/#/userModify/{{user.id}}"> {{user.address.streetNumber + ' ' + user.address.streetName + ' - ' + user.address.zipCode + ' ' + user.address.city}}</td>
+        <td>#<a href="/#/userModify/{{user.id}}">{{user.id}}</a></td>
+        <td><a href="/#/userModify/{{user.id}}"> {{user.firstName + ' ' + user.lastName}}</a></td>
+        <td>{{user.phoneLandLine + ' - ' + user.phoneMobileLine}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.address.streetNumber + ' ' + user.address.streetName + ' - ' + user.address.zipCode + ' ' + user.address.city}}</td>
     </tr>
 </table>
