@@ -16,10 +16,15 @@ public class Request {
 
     private String title;
     private String description;
-    private RequestStatus requestStatus;
-    private User author;
     private Date createdDate;
-    private Date validatedDate;
+
+    private RequestStatus requestStatus;
+
+    private User author;
+    private User customer;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Collection<User> technicians;
 
     @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "addressId")
@@ -67,14 +72,6 @@ public class Request {
         this.createdDate = createdDate;
     }
 
-    public Date getValidatedDate() {
-        return validatedDate;
-    }
-
-    public void setValidatedDate(Date validatedDate) {
-        this.validatedDate = validatedDate;
-    }
-
     public RequestStatus getRequestStatus() {
         return requestStatus;
     }
@@ -97,5 +94,21 @@ public class Request {
 
     public void setNotes(Collection<Note> notes) {
         this.notes = notes;
+    }
+
+    public User getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(User customer) {
+        this.customer = customer;
+    }
+
+    public Collection<User> getTechnicians() {
+        return technicians;
+    }
+
+    public void setTechnicians(Collection<User> technicians) {
+        this.technicians = technicians;
     }
 }
