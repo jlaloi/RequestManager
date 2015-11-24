@@ -2,8 +2,7 @@
 
 
     <user-roles ng-model="createUserCtrl.user.authorities"></user-roles>
-{{createUserCtrl.user.authorities}}
-    <fieldset class="form-group" style="clear:both;">
+    <fieldset class="form-group">
         <input type="text" class="form-control" placeholder="User Name"
                title="User Name" ng-model="createUserCtrl.user.username" required />
     </fieldset>
@@ -63,7 +62,7 @@
     </fieldset>
 
     <fieldset class="form-group">
-        <input type="checkbox" class="form-control" placeholder="Allowed to log"
+        <input type="checkbox" placeholder="Allowed to log"
                   title="Allowed to log" ng-model="createUserCtrl.user.enabled"  /> Allowed to log
     </fieldset>
 

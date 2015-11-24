@@ -158,21 +158,11 @@
             restrict : 'E',
             require: 'ngModel',
             link: function(scope, element, attrs, ngModel) {
-                console.log(ngModel.$viewValue);
-                console.log(ngModel);
                 scope.roles = [ {"authority":"ADMIN"}, {"authority":"CUSTOMER"}, {"authority":"TECHNICIAN"} ];
                 scope.selected = {};
                 scope.userRoles = [];
-                scope.forceArray = function(){
-                    if(angular.isUndefined(ngModel.$modelValue) || !angular.isArray(ngModel.$modelValue) ){
-                        console.log('force array');
-                        ngModel.$modelValue = [];
-                    }
-                }
                 scope.roleChange = function(role){
-                    console.log(role + ' updated');
-                    scope.forceArray();
-                    var index = ngModel.$modelValue.indexOf(role);
+                    var index = ngModel.$modelValue.map(function(d) { return d['authority']; }).indexOf(role.authority);
                     if(scope.selected[role.authority]){
                         if(index = -1){
                             ngModel.$modelValue.push(role);
@@ -183,13 +173,20 @@
                         }
                     }
                 }
-                scope.forceArray();
-                for (var i = 0; i < scope.roles.length; i++) {
-                    var role = scope.roles[i];
-                    if(ngModel.$modelValue.indexOf(role) > -1){
-                        scope.selected[role.authority] = true;
+                function revalidate(_val) {
+                    if(!angular.isUndefined(ngModel.$modelValue) && angular.isArray(ngModel.$modelValue)) {
+                        for (var i = 0; i < scope.roles.length; i++) {
+                            var role = scope.roles[i];
+                            var index = ngModel.$modelValue.map(function(d) { return d['authority']; }).indexOf(role.authority);
+                            if (index> -1) {
+                                scope.selected[role.authority] = true;
+                            }
+                        }
                     }
+                    return _val;
                 }
+                ngModel.$formatters.unshift(revalidate);
+                ngModel.$parsers.unshift(revalidate);
              },
             templateUrl : 'user-roles.html'
         };

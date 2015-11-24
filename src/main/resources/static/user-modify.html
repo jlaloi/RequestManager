@@ -4,8 +4,7 @@
                title="ID" ng-model="modifyUserCtrl.user.id" ng-change="modifyUserCtrl.idUpdated()" required />
     </fieldset>
     <user-roles ng-model="modifyUserCtrl.user.authorities"></user-roles>
-    {{modifyUserCtrl.user.authorities}}
-    <fieldset class="form-group" style="clear:both">
+    <fieldset class="form-group">
         <input type="text" class="form-control" placeholder="User Name"
                title="User Name" ng-model="modifyUserCtrl.user.username" required />
     </fieldset>
@@ -65,7 +64,7 @@
     </fieldset>
 
     <fieldset class="form-group">
-        <input type="checkbox" class="form-control" placeholder="Allowed to log"
+        <input type="checkbox" placeholder="Allowed to log"
                title="Allowed to log" ng-model="modifyUserCtrl.user.enabled"  /> Allowed to log
     </fieldset>
 
