@@ -1,5 +1,18 @@
-<div ng-repeat="user in usersCtrl.users">
-    <h4>
-        #<a href="/#/userModify/{{user.id}}">{{user.id}}:</a> {{user.firstName + ' ' + user.lastName}}
-    </h4>
-</div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>User ID</th>
+        <th>Name</th>
+        <th>Phones</th>
+        <th>Email</th>
+        <th>Address</th>
+    </tr>
+    </thead>
+    <tr ng-repeat="user in usersCtrl.users">
+        <td> #<a href="/#/userModify/{{user.id}}">{{user.id}}</a></td>
+        <td> <a href="/#/userModify/{{user.id}}"> {{user.firstName + ' ' + user.lastName}}</td>
+        <td> <a href="/#/userModify/{{user.id}}"> {{user.phoneLandLine + ' - ' + user.phoneMobileLine}}</td>
+        <td> <a href="/#/userModify/{{user.id}}"> {{user.email}}</td>
+        <td> <a href="/#/userModify/{{user.id}}"> {{user.address.streetNumber + ' ' + user.address.streetName + ' - ' + user.address.zipCode + ' ' + user.address.city}}</td>
+    </tr>
+</table>

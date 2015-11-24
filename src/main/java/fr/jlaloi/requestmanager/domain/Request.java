@@ -1,9 +1,7 @@
 package fr.jlaloi.requestmanager.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.Date;
 
 /**
@@ -22,6 +20,13 @@ public class Request {
     private User author;
     private Date createdDate;
     private Date validatedDate;
+
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "addressId")
+    private Address address;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Collection<Note> notes;
 
     public Request(){
     }
@@ -76,5 +81,21 @@ public class Request {
 
     public void setRequestStatus(RequestStatus requestStatus) {
         this.requestStatus = requestStatus;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public Collection<Note> getNotes() {
+        return notes;
+    }
+
+    public void setNotes(Collection<Note> notes) {
+        this.notes = notes;
     }
 }

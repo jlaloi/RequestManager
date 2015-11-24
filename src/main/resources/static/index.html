@@ -1,38 +1,45 @@
 <!doctype html>
 <html>
-    <head>
-        <title>Request Manager</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-    </head>
+<head>
+    <title>Request Manager</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+          integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
+          crossorigin="anonymous"/>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
 
-    <body ng-app="requestManager" class="container" >
+</head>
 
-        <h1>Request Manager</h1>
+<body ng-app="requestManager" class="container">
 
-        <login-form ng-show="!authenticated"></login-form>
+    <h1>Request Manager</h1>
 
-        <div ng-show="authenticated">
+    <login-form ng-show="!authenticated"></login-form>
 
-            <nav>
-                <ul class="pagination">
-                    <li><a ui-sref="userList">List User</a></li>
-                    <li><a ui-sref="userCreate">Create User</a></li>
-                    <li><a ui-sref="userModify">Modify User</a></li>
-                </ul>
-            </nav>
+    <div ng-show="authenticated">
 
-            <div ui-view></div>
+        <nav class="text-center">
+            <ul class="pagination">
+                <li><a ui-sref="userList">List User</a></li>
+                <li><a ui-sref="userCreate">Create User</a></li>
+                <li><a ui-sref="userModify">Modify User</a></li>
+            </ul>
+        </nav>
 
-            <p class="text-center">
-                <a href="" ng-click="logout()">Logout</a>
-            </p>
+        <div ui-view></div>
 
-        </div>
+        <p class="text-center">
+            <a href="" ng-click="logout()">Logout</a>
+        </p>
 
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular.min.js"></script>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular-cookies.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
-        <script src="js/app.js"></script>
+    </div>
 
-    </body>
+    <script type="text/javascript"
+            src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular.min.js"></script>
+    <script type="text/javascript"
+            src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular-cookies.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
 </html>

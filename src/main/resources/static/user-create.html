@@ -1,74 +1,119 @@
-<form name="createUserForm"  ng-submit="createUserForm.$valid && createUserCtrl.createUser()" >
+<form name="createUserForm" ng-submit="createUserForm.$valid && createUserCtrl.createUser()" class="form-horizontal">
 
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Login</label>
 
-    <user-roles ng-model="createUserCtrl.user.authorities"></user-roles>
-    <fieldset class="form-group">
-        <input type="text" class="form-control" placeholder="User Name"
-               title="User Name" ng-model="createUserCtrl.user.username" required />
-    </fieldset>
-    <fieldset class="form-group">
-        <input type="password" class="form-control" placeholder="Password"
-               title="Password" ng-model="createUserCtrl.user.password" required />
-    </fieldset>
-    <fieldset class="form-group">
-        <input type="text" class="form-control" placeholder="First Name"
-               title="First Name" ng-model="createUserCtrl.user.firstName" required />
-    </fieldset>
-    <fieldset class="form-group">
-        <input type="text" class="form-control" placeholder="Last Name"
-               title="Last Name" ng-model="createUserCtrl.user.lastName" required />
-    </fieldset>
+        <div class="col-md-10">
+            <div class="form-group row">
+                <div class="col-md-5">
+                    <input type="text" class="form-control" placeholder="User Name"
+                           title="User Name" ng-model="createUserCtrl.user.username" required/>
+                </div>
+                <div class="col-md-5">
+                    <input type="password" class="form-control" placeholder="Password"
+                           title="Password" ng-model="createUserCtrl.user.password" required/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-10">
+                    <user-roles ng-model="createUserCtrl.user.authorities"></user-roles>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" placeholder="Allowed to log in"
+                               title="Allowed to log" ng-model="createUserCtrl.user.enabled"/> LOG IN
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <fieldset class="form-group">
-        <input type="text" class="form-control" placeholder="Street Number"
-               title="Street Number" ng-model="createUserCtrl.user.address.streetNumber" required />
-    </fieldset>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Full Name</label>
 
-    <fieldset class="form-group">
-        <input type="text" class="form-control" placeholder="Street Name"
-               title="Street Name" ng-model="createUserCtrl.user.address.streetName" required />
-    </fieldset>
+        <div class="col-md-10">
+            <div class="form-group row">
+                <div class="col-md-5">
+                    <input type="text" class="form-control" placeholder="Last Name"
+                           title="Last Name" ng-model="createUserCtrl.user.lastName" required/>
+                </div>
+                <div class="col-md-5">
+                    <input type="text" class="form-control" placeholder="First Name"
+                           title="First Name" ng-model="createUserCtrl.user.firstName" required/>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <fieldset class="form-group">
-        <input type="text" class="form-control" placeholder="Zip Code"
-               title="Zip Code" ng-model="createUserCtrl.user.address.zipCode" required />
-    </fieldset>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Contact</label>
 
-    <fieldset class="form-group">
-        <input type="text" class="form-control" placeholder="City"
-               title="City" ng-model="createUserCtrl.user.address.city" required />
-    </fieldset>
+        <div class="col-md-10">
+            <div class="form-group row">
+                <div class="col-md-5">
+                    <input type="text" class="form-control" placeholder="Phone Land Line"
+                           title="Phone Land Line" ng-model="createUserCtrl.user.phoneLandLine" required/>
+                </div>
+                <div class="col-md-5">
+                    <input type="text" class="form-control" placeholder="Phone Mobile"
+                           title="Phone Mobile" ng-model="createUserCtrl.user.phoneMobile" required/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-10">
+                    <input type="email" class="form-control" placeholder="Email"
+                           title="Email" ng-model="createUserCtrl.user.email" required/>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <fieldset class="form-group">
-        <textarea  class="form-control" placeholder="Address Note"
-               title="Address Note" ng-model="createUserCtrl.user.address.note" required ></textarea>
-    </fieldset>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Address</label>
 
-    <fieldset class="form-group">
-        <input type="email" name="email" class="form-control" placeholder="Email"
-               title="Email" ng-model="createUserCtrl.user.email" required />
-    </fieldset>
-    <fieldset class="form-group">
-        <input type="text" class="form-control" placeholder="Phone Land Line"
-               title="Phone Land Line" ng-model="createUserCtrl.user.phoneLandLine" required />
-    </fieldset>
-    <fieldset class="form-group">
-        <input type="text" class="form-control" placeholder="Phone Mobile"
-               title="Phone Mobile" ng-model="createUserCtrl.user.phoneMobile" required />
-    </fieldset>
-    <fieldset class="form-group">
-        <textarea class="form-control" placeholder="Note"
-               title="Note" ng-model="createUserCtrl.user.note" required ></textarea>
-    </fieldset>
+        <div class="col-md-10">
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <input type="text" class="form-control" placeholder="Street Number"
+                           title="Street Number" ng-model="createUserCtrl.user.address.streetNumber" required/>
+                </div>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" placeholder="Street Name"
+                           title="Street Name" ng-model="createUserCtrl.user.address.streetName" required/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <input type="text" class="form-control" placeholder="Zip Code"
+                           title="Zip Code" ng-model="createUserCtrl.user.address.zipCode" required/>
+                </div>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" placeholder="City"
+                           title="City" ng-model="createUserCtrl.user.address.city" required/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-10">
+                     <textarea class="form-control" placeholder="Address Note"
+                               title="Address Note" ng-model="createUserCtrl.user.address.note"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <fieldset class="form-group">
-        <input type="checkbox" placeholder="Allowed to log"
-                  title="Allowed to log" ng-model="createUserCtrl.user.enabled"  /> Allowed to log
-    </fieldset>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Note</label>
+
+        <div class="col-md-10">
+            <div class="form-group row">
+                <div class="col-md-10">
+                         <textarea class="form-control" placeholder="Note"
+                                   title="Note" ng-model="createUserCtrl.user.note" ></textarea></div>
+            </div>
+        </div>
+    </div>
 
     <fieldset class="form-group">
         <input type="submit" class="btn btn-primary pull-right" ng-disabled="!createUserForm.$valid"
-               value="Create user" />
+               value="Create user"/>
     </fieldset>
     <span>{{createUserCtrl.createInfo}}</span>
 </form>

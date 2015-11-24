@@ -132,6 +132,7 @@
                         userService.getUser(this.user.id).then(function (response) {
                             if (response.data != "") {
                                 modifyUserCtrl.user = response.data;
+                                modifyUserCtrl.user.password = '';
                                 modifyUserCtrl.modifyInfo = '';
                             } else {
                                 modifyUserCtrl.modifyInfo = 'User #' + modifyUserCtrl.user.id + ' not found!';

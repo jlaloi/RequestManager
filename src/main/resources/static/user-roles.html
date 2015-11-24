@@ -1,6 +1,4 @@
-<fieldset class="form-group">
-    <div ng-repeat="role in roles" style="float:left; padding-right:10px">
-        <input type="checkbox" placeholder="{{role.authority}}" ng-model="selected[role.authority]"
-               ng-change="roleChange(role);" title="{{role.authority}}"/> {{role.authority}}
-    </div>
-</fieldset>
+<label class="checkbox-inline" ng-repeat="role in roles">
+    <input type="checkbox"  ng-model="selected[role.authority]"
+           ng-change="roleChange(role);" title="{{role.authority}}"/> {{role.authority}}
+</label>

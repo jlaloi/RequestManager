@@ -17,6 +17,7 @@ public class Address {
     private String city;
     private String zipCode;
     private String note;
+    private String connectionType;
 
     public long getAddressId() {
         return addressId;
@@ -60,5 +61,13 @@ public class Address {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public String getConnectionType() {
+        return connectionType;
+    }
+
+    public void setConnectionType(String connectionType) {
+        this.connectionType = connectionType;
     }
 }

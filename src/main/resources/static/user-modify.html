@@ -1,72 +1,119 @@
-<form name="modifyUserForm" ng-submit="modifyUserForm.$valid && modifyUserCtrl.modifyUser()">
-    <fieldset class="form-group">
-        <input type="text" class="form-control" placeholder="User ID"
-               title="ID" ng-model="modifyUserCtrl.user.id" ng-change="modifyUserCtrl.idUpdated()" required />
-    </fieldset>
-    <user-roles ng-model="modifyUserCtrl.user.authorities"></user-roles>
-    <fieldset class="form-group">
-        <input type="text" class="form-control" placeholder="User Name"
-               title="User Name" ng-model="modifyUserCtrl.user.username" required />
-    </fieldset>
-    <fieldset class="form-group">
-        <input type="password" class="form-control" placeholder="Password"
-               title="Password" ng-model="modifyUserCtrl.user.password" required />
-    </fieldset>
-    <fieldset class="form-group">
-        <input type="text" class="form-control" placeholder="First Name"
-               title="First Name" ng-model="modifyUserCtrl.user.firstName" required />
-    </fieldset>
-    <fieldset class="form-group">
-        <input type="text" class="form-control" placeholder="Last Name"
-               title="Last Name" ng-model="modifyUserCtrl.user.lastName" required />
-    </fieldset>
+<form name="modifyUserForm" ng-submit="modifyUserForm.$valid && modifyUserCtrl.modifyUser()" class="form-horizontal">
 
-    <fieldset class="form-group">
-        <input type="text" class="form-control" placeholder="Street Number"
-               title="Street Number" ng-model="modifyUserCtrl.user.address.streetNumber" required />
-    </fieldset>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Login</label>
 
-    <fieldset class="form-group">
-        <input type="text" class="form-control" placeholder="Street Name"
-               title="Street Name" ng-model="modifyUserCtrl.user.address.streetName" required />
-    </fieldset>
+        <div class="col-md-10">
+            <div class="form-group row">
+                <div class="col-md-2">
+                 <input type="text" class="form-control" placeholder="User ID"
+                       title="ID" ng-model="modifyUserCtrl.user.id" ng-change="modifyUserCtrl.idUpdated()" required />
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" placeholder="User Name"
+                           title="User Name" ng-model="modifyUserCtrl.user.username" required/>
+                </div>
+                <div class="col-md-4">
+                    <input type="password" class="form-control" placeholder="Password"
+                           title="Password" ng-model="modifyUserCtrl.user.password" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-10">
+                    <user-roles ng-model="modifyUserCtrl.user.authorities"></user-roles>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" placeholder="Allowed to log in"
+                               title="Allowed to log" ng-model="modifyUserCtrl.user.enabled"/> LOG IN
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <fieldset class="form-group">
-        <input type="text" class="form-control" placeholder="Zip Code"
-               title="Zip Code" ng-model="modifyUserCtrl.user.address.zipCode" required />
-    </fieldset>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Full Name</label>
 
-    <fieldset class="form-group">
-        <input type="text" class="form-control" placeholder="City"
-               title="City" ng-model="modifyUserCtrl.user.address.city" required />
-    </fieldset>
+        <div class="col-md-10">
+            <div class="form-group row">
+                <div class="col-md-5">
+                    <input type="text" class="form-control" placeholder="Last Name"
+                           title="Last Name" ng-model="modifyUserCtrl.user.lastName" required/>
+                </div>
+                <div class="col-md-5">
+                    <input type="text" class="form-control" placeholder="First Name"
+                           title="First Name" ng-model="modifyUserCtrl.user.firstName" required/>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <fieldset class="form-group">
-        <textarea  class="form-control" placeholder="Address Note"
-                   title="Address Note" ng-model="modifyUserCtrl.user.address.note" required ></textarea>
-    </fieldset>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Contact</label>
 
-    <fieldset class="form-group">
-        <input type="email" name="email" class="form-control" placeholder="Email"
-               title="Email" ng-model="modifyUserCtrl.user.email" required />
-    </fieldset>
-    <fieldset class="form-group">
-        <input type="text" class="form-control" placeholder="Phone Land Line"
-               title="Phone Land Line" ng-model="modifyUserCtrl.user.phoneLandLine" required />
-    </fieldset>
-    <fieldset class="form-group">
-        <input type="text" class="form-control" placeholder="Phone Mobile"
-               title="Phone Mobile" ng-model="modifyUserCtrl.user.phoneMobile" required />
-    </fieldset>
-    <fieldset class="form-group">
-        <textarea class="form-control" placeholder="Note"
-                  title="Note" ng-model="modifyUserCtrl.user.note" required ></textarea>
-    </fieldset>
+        <div class="col-md-10">
+            <div class="form-group row">
+                <div class="col-md-5">
+                    <input type="text" class="form-control" placeholder="Phone Land Line"
+                           title="Phone Land Line" ng-model="modifyUserCtrl.user.phoneLandLine" required/>
+                </div>
+                <div class="col-md-5">
+                    <input type="text" class="form-control" placeholder="Phone Mobile"
+                           title="Phone Mobile" ng-model="modifyUserCtrl.user.phoneMobile" required/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-10">
+                    <input type="email" class="form-control" placeholder="Email"
+                           title="Email" ng-model="modifyUserCtrl.user.email" required/>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <fieldset class="form-group">
-        <input type="checkbox" placeholder="Allowed to log"
-               title="Allowed to log" ng-model="modifyUserCtrl.user.enabled"  /> Allowed to log
-    </fieldset>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Address</label>
+
+        <div class="col-md-10">
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <input type="text" class="form-control" placeholder="Street Number"
+                           title="Street Number" ng-model="modifyUserCtrl.user.address.streetNumber" required/>
+                </div>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" placeholder="Street Name"
+                           title="Street Name" ng-model="modifyUserCtrl.user.address.streetName" required/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <input type="text" class="form-control" placeholder="Zip Code"
+                           title="Zip Code" ng-model="modifyUserCtrl.user.address.zipCode" required/>
+                </div>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" placeholder="City"
+                           title="City" ng-model="modifyUserCtrl.user.address.city" required/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-10">
+                     <textarea class="form-control" placeholder="Address Note"
+                               title="Address Note" ng-model="modifyUserCtrl.user.address.note"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Note</label>
+
+        <div class="col-md-10">
+            <div class="form-group row">
+                <div class="col-md-10">
+                         <textarea class="form-control" placeholder="Note"
+                                   title="Note" ng-model="modifyUserCtrl.user.note"></textarea></div>
+            </div>
+        </div>
+    </div>
 
     <fieldset class="form-group">
         <input type="submit" class="btn btn-primary pull-right" ng-disabled="!modifyUserForm.$valid"
