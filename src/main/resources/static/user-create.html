@@ -1,5 +1,9 @@
 <form name="createUserForm"  ng-submit="createUserForm.$valid && createUserCtrl.createUser()" >
-    <fieldset class="form-group">
+
+
+    <user-roles ng-model="createUserCtrl.user.authorities"></user-roles>
+{{createUserCtrl.user.authorities}}
+    <fieldset class="form-group" style="clear:both;">
         <input type="text" class="form-control" placeholder="User Name"
                title="User Name" ng-model="createUserCtrl.user.username" required />
     </fieldset>

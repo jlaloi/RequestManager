@@ -1,0 +1,3 @@
+<div ng-repeat="role in roles" style="float:left; padding-right:10px">
+    <input type="checkbox" placeholder="{{role.authority}}" ng-model="selected[role.authority]" ng-change="roleChange(role);" title="{{role.authority}}"  /> {{role.authority}}
+</div>

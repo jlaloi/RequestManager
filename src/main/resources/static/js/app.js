@@ -86,7 +86,7 @@
 
         $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-        $urlRouterProvider.otherwise("usersList");
+        //$urlRouterProvider.otherwise("usersList");
 
         $stateProvider
             .state('userList', {
@@ -107,12 +107,14 @@
                 templateUrl: "user-create.html",
                 controller :  function(userService) {
                     this.user = {};
+                    this.user.authorities =[];
                     this.createInfo = '';
                     var createUserCtrl = this;
                     this.createUser =  function() {
                         userService.createUser(this.user).then(function(response) {
                             createUserCtrl.createInfo = 'User #' + response.data.id + ' created!';
                             createUserCtrl.user = {};
+                            createUserCtrl.user.authorities =[];
                         });
                     };
                 },
@@ -149,6 +151,48 @@
                 },
                 controllerAs: 'modifyUserCtrl'
             });
+    });
+
+    app.directive('userRoles', function() {
+        return {
+            restrict : 'E',
+            require: 'ngModel',
+            link: function(scope, element, attrs, ngModel) {
+                console.log(ngModel.$viewValue);
+                console.log(ngModel);
+                scope.roles = [ {"authority":"ADMIN"}, {"authority":"CUSTOMER"}, {"authority":"TECHNICIAN"} ];
+                scope.selected = {};
+                scope.userRoles = [];
+                scope.forceArray = function(){
+                    if(angular.isUndefined(ngModel.$modelValue) || !angular.isArray(ngModel.$modelValue) ){
+                        console.log('force array');
+                        ngModel.$modelValue = [];
+                    }
+                }
+                scope.roleChange = function(role){
+                    console.log(role + ' updated');
+                    scope.forceArray();
+                    var index = ngModel.$modelValue.indexOf(role);
+                    if(scope.selected[role.authority]){
+                        if(index = -1){
+                            ngModel.$modelValue.push(role);
+                        }
+                    }else{
+                        if(index > -1){
+                            ngModel.$modelValue.splice(index, 1);
+                        }
+                    }
+                }
+                scope.forceArray();
+                for (var i = 0; i < scope.roles.length; i++) {
+                    var role = scope.roles[i];
+                    if(ngModel.$modelValue.indexOf(role) > -1){
+                        scope.selected[role.authority] = true;
+                    }
+                }
+             },
+            templateUrl : 'user-roles.html'
+        };
     });
 
 })();

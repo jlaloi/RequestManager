@@ -3,7 +3,9 @@
         <input type="text" class="form-control" placeholder="User ID"
                title="ID" ng-model="modifyUserCtrl.user.id" ng-change="modifyUserCtrl.idUpdated()" required />
     </fieldset>
-    <fieldset class="form-group">
+    <user-roles ng-model="modifyUserCtrl.user.authorities"></user-roles>
+    {{modifyUserCtrl.user.authorities}}
+    <fieldset class="form-group" style="clear:both">
         <input type="text" class="form-control" placeholder="User Name"
                title="User Name" ng-model="modifyUserCtrl.user.username" required />
     </fieldset>
