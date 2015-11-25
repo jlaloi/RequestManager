@@ -24,6 +24,7 @@
                     }).success(function(data) {
                         if (data.name) {
                             $rootScope.authenticated = true;
+                            $scope.username = data.name;
                             $scope.getRoles();
                         } else {
                             $rootScope.authenticated = false;
@@ -39,9 +40,9 @@
                 $scope.getRoles = function(){
                     $http.get('roles').success(function(data) {
                         $rootScope.roles = data;
-                        $scope.roleAdmin =  $scope.isRole('ADMIN');
-                        $scope.roleCustomer =  $scope.isRole('CUSTOMER');
-                        $scope.roleTechnician =  $scope.isRole('TECHNICIAN');
+                        $scope.roleAdmin =  $scope.isRole('ROLE_ADMIN');
+                        $scope.roleCustomer =  $scope.isRole('ROLE_CUSTOMER');
+                        $scope.roleTechnician =  $scope.isRole('ROLE_TECHNICIAN');
                     }).error(function() {
                         $rootScope.roles = [];
                     });

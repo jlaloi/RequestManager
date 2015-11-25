@@ -1,9 +1,9 @@
 package fr.jlaloi.requestmanager;
 
-import fr.jlaloi.requestmanager.domain.Role;
 import fr.jlaloi.requestmanager.domain.User;
 import fr.jlaloi.requestmanager.domain.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,6 +29,13 @@ public class RestServices {
     public Collection<? extends GrantedAuthority> roles(Principal principal) {
         User user = userRepository.findByUsername(principal.getName());
         return user.getAuthorities();
+    }
+
+
+    @Secured("ROLE_ADMIN")
+    @RequestMapping("/hello")
+    public String hello(){
+        return "Hello!";
     }
 
 }

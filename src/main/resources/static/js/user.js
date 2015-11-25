@@ -7,7 +7,7 @@
             restrict: 'E',
             require: 'ngModel',
             link: function (scope, element, attrs, ngModel) {
-                scope.roles = [{"authority": "ADMIN"}, {"authority": "CUSTOMER"}, {"authority": "TECHNICIAN"}];
+                scope.roles = [{"authority": "ROLE_ADMIN"}, {"authority": "ROLE_CUSTOMER"}, {"authority": "ROLE_TECHNICIAN"}];
                 scope.selected = {};
                 scope.userRoles = [];
                 scope.roleChange = function (role) {
