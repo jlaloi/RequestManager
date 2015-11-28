@@ -1,0 +1,6 @@
+{
+  "name": "RequestManager",
+  "devDependencies": {
+    "bower": "1.6.8"
+  }
+}
