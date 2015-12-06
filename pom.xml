@@ -125,9 +125,6 @@
                             <directory>bower_components</directory>
                         </fileset>
                         <fileset>
-                            <directory>node_modules</directory>
-                        </fileset>
-                        <fileset>
                             <directory>etc</directory>
                         </fileset>
                     </filesets>

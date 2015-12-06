@@ -30,7 +30,7 @@
         $stateProvider
             .state('userList', {
                 url: "/userList",
-                templateUrl: "user-list.html",
+                templateUrl: "/templates/user-list.html",
                 controller :  function(userService) {
                     var userController = this;
                     this.users = [];
@@ -43,7 +43,7 @@
 
             .state('userCreate', {
                 url: "/userCreate",
-                templateUrl: "user-create.html",
+                templateUrl: "/templates/user-create.html",
                 controller :  function(userService) {
                     this.user = {};
                     this.user.authorities =[];
@@ -62,7 +62,7 @@
 
             .state('userModify', {
                 url: "/userModify/:id",
-                templateUrl: "user-modify.html",
+                templateUrl: "/templates/user-modify.html",
                 controller: function ($stateParams, userService) {
                     this.user = {};
                     this.modifyInfo = '';

@@ -8,7 +8,7 @@
     app.directive('loginForm', function() {
         return {
             restrict : 'E',
-            templateUrl : 'login.html',
+            templateUrl : '/templates/login.html',
             controller: function($rootScope, $scope, $http) {
 
                 var authenticate = function(credentials, callback) {
