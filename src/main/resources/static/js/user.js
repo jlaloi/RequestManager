@@ -42,7 +42,7 @@
                 ngModel.$formatters.unshift(revalidate);
                 ngModel.$parsers.unshift(revalidate);
             },
-            templateUrl: 'user-roles.html'
+            templateUrl: '/templates/user-roles.html'
         };
     });
 })();
