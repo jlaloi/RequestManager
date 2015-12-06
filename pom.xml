@@ -102,6 +102,17 @@
                         </goals>
                     </execution>
 
+                    <execution>
+                        <id>gulp</id>
+                        <goals>
+                            <goal>gulp</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>lint build</arguments>
+                        </configuration>
+                        <phase>prepare-package</phase>
+                    </execution>
+
                 </executions>
             </plugin>
 

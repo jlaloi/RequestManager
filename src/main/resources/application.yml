@@ -4,7 +4,7 @@ server:
 spring:
     datasource:
         driverClassName: com.mysql.jdbc.Driver
-        url: jdbc:mysql://127.0.0.1/REQUESTMANAGER
+        url: jdbc:mysql://192.168.1.24/REQUESTMANAGER
         username: test
         password: test
 
